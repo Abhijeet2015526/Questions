@@ -1,0 +1,19 @@
+QUESTIONS — setup
+
+1. Create/open a Supabase project.
+2. Open SQL Editor and run schema.sql.
+3. Go to Authentication -> Users and create ONE user for yourself.
+   Example: your own email + a strong password.
+4. Open Project Settings -> API.
+5. Copy your Project URL and the Publishable/anon key into config.js.
+   Do NOT use the service_role/secret key.
+6. Test index.html by opening it with a local web server.
+7. Deploy the whole folder to a static host (for example GitHub Pages, Netlify, or Vercel).
+8. Open admin.html from the same deployed site and sign in with your Supabase user.
+9. Send only the public index.html website link to her.
+
+Privacy:
+- The public page can INSERT answers only.
+- The admin page requires Supabase email/password authentication to READ answers.
+- Do not put a Supabase service_role/secret key in the website.
+- The database stores the selected answer, time, a random visitor ID, and browser user-agent.

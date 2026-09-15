@@ -1,0 +1,28 @@
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{min-height:100svh;overflow:hidden;color:#402044;background:radial-gradient(circle at 18% 12%,rgba(255,255,255,.9),transparent 22%),radial-gradient(circle at 82% 25%,rgba(255,196,232,.75),transparent 27%),linear-gradient(145deg,#f8b6dc,#e8c5f5 48%,#f6c6e9)}
+.page{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:25px 18px;position:relative;z-index:2}
+.question-card,.official,.thinking,.nope{width:min(94vw,620px)}
+.eyebrow{font-size:12px;letter-spacing:6px;font-weight:800;color:#703b9e;margin-bottom:23px}
+.tiny-heart{font-size:31px;color:#d72d9b}
+h1{font-family:Georgia,serif;font-size:clamp(43px,11vw,74px);line-height:.98;margin:7px 0 25px;color:#3e1745}
+h1 span{color:#d72d9b;font-style:italic}
+.question-card>p,.thinking p,.nope p,.official p{font-size:clamp(16px,4.2vw,20px);line-height:1.6;color:#653e67}
+.choice-area{height:180px;position:relative;margin:5px auto 0;max-width:520px}
+button{font:inherit;font-weight:800;border:0;cursor:pointer}
+.yes{position:absolute;left:50%;top:57%;transform:translate(-50%,-50%);min-width:180px;padding:19px 42px;border-radius:60px;color:#fff;font-size:24px;background:linear-gradient(100deg,#e91c91,#9d35d6);box-shadow:0 14px 30px rgba(140,32,150,.22);transition:.25s}
+.yes:hover{transform:translate(-50%,-54%) scale(1.04)}
+.yes span{font-size:28px;margin-left:7px}
+.no,.think{position:absolute;background:rgba(255,255,255,.48);color:#693b6c;border:2px solid rgba(100,40,120,.25);padding:11px 20px;border-radius:40px;transition:left .18s ease,top .18s ease}
+.no{left:calc(50% + 112px);top:38%}.think{left:50%;top:91%;transform:translate(-50%,-50%)}
+.hint{font-family:Georgia,serif;font-style:italic;color:#704a72;font-size:14px}
+.petals{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.petal{position:absolute;top:-10vh;animation:fall linear infinite;opacity:.7}
+@keyframes fall{to{transform:translate3d(100px,115vh,0) rotate(540deg)}}
+.hidden{display:none}.official,.thinking,.nope{animation:appear .65s ease}
+.big-heart{font-size:75px;text-shadow:0 10px 25px rgba(160,30,130,.18)}
+.official h2,.thinking h2,.nope h2{font-family:Georgia,serif;font-size:clamp(38px,10vw,62px);margin:5px 0 10px;color:#551d5e}
+.cat{font-size:120px;line-height:1;margin-top:22px}.kiss{font-weight:900;font-size:23px;color:#fff;text-shadow:2px 2px #e3289d}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);padding:11px 17px;border-radius:30px;background:#301c35;color:white;transition:.3s;z-index:9;font-size:14px}.toast.show{transform:translateX(-50%) translateY(0)}
+@keyframes appear{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:520px){.choice-area{height:205px}.no{left:calc(50% + 88px)}.yes{min-width:170px;font-size:22px}.think{top:92%}}

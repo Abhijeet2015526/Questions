@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questions 💗</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="petals" id="petals"></div>
+<main class="page">
+  <div class="question-card" id="questionCard">
+    <div class="eyebrow">A SMALL QUESTION</div>
+    <div class="tiny-heart">♡</div>
+    <h1>Can I take you<br>on a <span>date?</span></h1>
+    <p>There's something I've been meaning to ask you...<br>So here's my question. ❤️</p>
+
+    <div class="choice-area" id="choiceArea">
+      <button class="yes" id="yesBtn">Yes <span>♡</span></button>
+      <button class="no" id="noBtn">No</button>
+      <button class="think" id="thinkBtn">Let me think 🙈</button>
+    </div>
+    <div class="hint">Your answer stays between us 🤫</div>
+  </div>
+
+  <section class="official hidden" id="official">
+    <div class="eyebrow">IT'S OFFICIAL</div>
+    <div class="big-heart">♥</div>
+    <h2>It's a yes! 💗</h2>
+    <p>Okay... you just made my day.</p>
+    <div class="cat">😽</div>
+    <div class="kiss">*muah*</div>
+  </section>
+
+  <section class="thinking hidden" id="thinking">
+    <div class="eyebrow">NO RUSH</div>
+    <div class="big-heart">💭</div>
+    <h2>Take your time.</h2>
+    <p>Whatever you decide, thank you for being honest with me. ❤️</p>
+  </section>
+
+  <section class="nope hidden" id="nope">
+    <div class="eyebrow">I UNDERSTAND</div>
+    <div class="big-heart">🌷</div>
+    <h2>Thank you for being honest.</h2>
+    <p>No awkwardness. I genuinely wish you the best. 🤍</p>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

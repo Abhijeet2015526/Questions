@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questions — Private Answers</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<main class="box">
+  <div id="login">
+    <p class="label">QUESTIONS • PRIVATE</p>
+    <h1>Your Answers 🔐</h1>
+    <p>Sign in with the Supabase account you created for your private dashboard.</p>
+    <input id="email" type="email" placeholder="Your email">
+    <input id="password" type="password" placeholder="Password">
+    <button id="loginBtn">Sign in</button>
+    <p id="loginMsg"></p>
+  </div>
+
+  <div id="dashboard" class="hidden">
+    <p class="label">QUESTIONS • PRIVATE</p>
+    <h1>Her response 💗</h1>
+    <div id="answer"></div>
+    <div id="time"></div>
+    <button id="refresh">Refresh</button>
+    <button id="logout" class="secondary">Sign out</button>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const login=document.getElementById("login"), dash=document.getElementById("dashboard");
+const msg=document.getElementById("loginMsg");
+
+document.getElementById("loginBtn").onclick=async()=>{
+  msg.textContent="Signing in...";
+  const {error}=await client.auth.signInWithPassword({
+    email:document.getElementById("email").value,
+    password:document.getElementById("password").value
+  });
+  if(error){msg.textContent=error.message;return}
+  login.classList.add("hidden");dash.classList.remove("hidden");load();
+};
+
+async function load(){
+  const {data,error}=await client.from("questions_responses")
+    .select("answer,created_at").order("created_at",{ascending:false}).limit(20);
+  if(error){document.getElementById("answer").textContent=error.message;return}
+  if(!data.length){document.getElementById("answer").textContent="No answer yet.";document.getElementById("time").textContent="";return}
+  const latest=data[0];
+  const labels={yes:"❤️ YES",think:"🙈 LET ME THINK",no:"😅 NO"};
+  document.getElementById("answer").textContent=labels[latest.answer]||latest.answer;
+  document.getElementById("time").textContent="Received: "+new Date(latest.created_at).toLocaleString();
+}
+document.getElementById("refresh").onclick=load;
+document.getElementById("logout").onclick=async()=>{await client.auth.signOut();location.reload()};
+</script>
+</body>
+</html>
